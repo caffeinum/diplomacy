@@ -1,6 +1,6 @@
 [build]
 builder = "NIXPACKS"
-nixpacksConfigPath = "nixpacks.toml"
+nixpacksConfigPath = "nixpacks-backend.toml"
 
 [deploy]
 restartPolicyType = "ON_FAILURE" 
