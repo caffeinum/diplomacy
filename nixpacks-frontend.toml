@@ -1,5 +1,8 @@
 providers = [ "node" ]
 
+[phases.setup]
+nixPkgs = ["bun"]
+
 [phases.build]
 cmds= [
 	"cd diplomacy/web && bun install",
