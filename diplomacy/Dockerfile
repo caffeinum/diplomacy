@@ -4,14 +4,14 @@ WORKDIR /app
 
 # install dependencies
 FROM base AS install
-COPY diplomacy/web/package.json diplomacy/web/bun.lock diplomacy/web/
-RUN cd diplomacy/web && bun install --frozen-lockfile
+COPY web/package.json web/bun.lock web/
+RUN cd web && bun install --frozen-lockfile
 
 # build the app
 FROM base AS build
-COPY --from=install /app/diplomacy/web/node_modules ./diplomacy/web/node_modules
-COPY diplomacy ./diplomacy
-WORKDIR /app/diplomacy/web
+COPY --from=install /app/web/node_modules ./web/node_modules
+COPY . ./
+WORKDIR /app/web
 ENV NODE_OPTIONS="--openssl-legacy-provider"
 RUN bun run --bun build
 
@@ -19,6 +19,6 @@ RUN bun run --bun build
 FROM oven/bun:1-alpine AS release
 WORKDIR /app
 RUN bun add serve
-COPY --from=build /app/diplomacy/web/build ./build
+COPY --from=build /app/web/build ./build
 EXPOSE 3000
 CMD ["bun", "run", "serve", "-s", "build", "-l", "3000"]
