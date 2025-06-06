@@ -1,0 +1,16 @@
+providers = [ "node" ]
+
+[phases.setup]
+nixpkgsArchive = "d1c6a5decfd9ad4c84354612d418b2856a57be1d"
+
+[phases.build]
+cmds= [
+	"cd diplomacy/web && bun install",
+	"cd diplomacy/web && bun run --bun build"
+]
+
+[start]
+cmd = "cd diplomacy/web && bunx serve build -l 3000"
+
+
+
