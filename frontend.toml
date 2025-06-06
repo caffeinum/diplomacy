@@ -1,0 +1,13 @@
+providers = [ "node" ]
+
+[phases.build]
+cmds= [
+	"cd diplomacy/web && npm install",
+	"cd diplomacy/web && NODE_OPTIONS='--openssl-legacy-provider' npm run build"
+]
+
+[start]
+cmd = "cd diplomacy/web && npm run start"
+
+
+
