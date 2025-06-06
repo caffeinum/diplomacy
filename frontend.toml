@@ -3,4 +3,6 @@ builder = "NIXPACKS"
 nixpacksConfigPath = "nixpacks-frontend.toml"
 
 [deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE" 
