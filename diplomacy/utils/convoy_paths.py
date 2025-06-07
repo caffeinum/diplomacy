@@ -284,3 +284,8 @@ def rebuild_all_maps():
         print('-' * 80)
         print('Adding {} (Hash: {}) to cache\n'.format(file_path, map_hash))
         add_to_cache(map_name)
+
+if __name__ == "__main__":
+    print("rebuilding all convoy path caches...")
+    rebuild_all_maps()
+    print("done rebuilding convoy path caches.")
